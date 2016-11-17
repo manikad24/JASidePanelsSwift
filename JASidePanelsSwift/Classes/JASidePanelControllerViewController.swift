@@ -29,7 +29,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         set{
             if newValue != _tapView {
                 if(_tapView != nil){
-                _tapView!.removeFromSuperview()
+                    _tapView!.removeFromSuperview()
                 }
                 
                 if newValue != nil {
@@ -43,7 +43,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
                     self.centerPanelContainer.addSubview(_tapView!)
                 }
             }
-
+            
         }
         get{
             return self._tapView
@@ -55,9 +55,9 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         set{
             if newValue != _leftPanel {
                 if(_leftPanel != nil){
-                _leftPanel.willMoveToParentViewController(nil)
-                _leftPanel.view.removeFromSuperview()
-                _leftPanel.removeFromParentViewController()
+                    _leftPanel.willMoveToParentViewController(nil)
+                    _leftPanel.view.removeFromSuperview()
+                    _leftPanel.removeFromParentViewController()
                 }
                 self._leftPanel = newValue
                 if (_leftPanel != nil) {
@@ -69,7 +69,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
                     self.visiblePanel = _leftPanel
                 }
             }
-
+            
         }
         get{
             return self._leftPanel
@@ -82,8 +82,8 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
             let previous = self._centerPanel
             if(newValue != _centerPanel){
                 if(_centerPanel != nil){
-                _centerPanel.removeObserver(self, forKeyPath: "view")
-                _centerPanel.removeObserver(self, forKeyPath: "viewControllers")
+                    _centerPanel.removeObserver(self, forKeyPath: "view")
+                    _centerPanel.removeObserver(self, forKeyPath: "viewControllers")
                 }
                 self._centerPanel = newValue
                 _centerPanel.addObserver(self, forKeyPath: "viewControllers", options: [], context: ja_kvoContext)
@@ -125,9 +125,9 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         set{
             if newValue != _rightPanel {
                 if(_rightPanel != nil){
-                _rightPanel.willMoveToParentViewController(nil)
-                _rightPanel.view.removeFromSuperview()
-                _rightPanel.removeFromParentViewController()
+                    _rightPanel.willMoveToParentViewController(nil)
+                    _rightPanel.view.removeFromSuperview()
+                    _rightPanel.removeFromParentViewController()
                 }
                 self._rightPanel = newValue
                 if (_rightPanel != nil) {
@@ -138,7 +138,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
                     self.visiblePanel = _rightPanel
                 }
             }
-
+            
         }
         get{
             return self._rightPanel
@@ -476,16 +476,16 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     func _layoutSidePanels() {
         if(rightPanel != nil){
-        if self.rightPanel.isViewLoaded() {
-            var frame = self.rightPanelContainer.bounds
-            if self.shouldResizeRightPanel {
-                if !self.pushesSidePanels {
-                    frame.origin.x = self.rightPanelContainer.bounds.size.width - self.rightVisibleWidth
+            if self.rightPanel.isViewLoaded() {
+                var frame = self.rightPanelContainer.bounds
+                if self.shouldResizeRightPanel {
+                    if !self.pushesSidePanels {
+                        frame.origin.x = self.rightPanelContainer.bounds.size.width - self.rightVisibleWidth
+                    }
+                    frame.size.width = self.rightVisibleWidth
                 }
-                frame.size.width = self.rightVisibleWidth
+                self.rightPanel.view.frame = frame
             }
-            self.rightPanel.view.frame = frame
-        }
         }
         if self.leftPanel.isViewLoaded() {
             var frame = self.leftPanelContainer.bounds
@@ -651,7 +651,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self._centerPanelTapped))
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     func _centerPanelTapped(gesture: UIGestureRecognizer) {
         self._showCenterPanel(true, bounce: false)
     }
@@ -806,7 +806,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         let bounceDistance : CGFloat = (centerPanelRestingFrame.origin.x - self.centerPanelContainer.frame.origin.x) * self.bouncePercentage
         // looks bad if we bounce when the center panel grows
         if centerPanelRestingFrame.size.width > self.centerPanelContainer.frame.size.width {
-             shouldBounces = false
+            shouldBounces = false
         }
         let duration: CGFloat = self._calculatedDuration()
         UIView.animateWithDuration(Double(duration), delay: 0.0, options: [.CurveLinear, .LayoutSubviews], animations: {() -> Void in

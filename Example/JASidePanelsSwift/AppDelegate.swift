@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let storyBoard = UIStoryboard(name:"Main",bundle: nil)
+    var sidePanel : JASidePanelController?
     
 
 
