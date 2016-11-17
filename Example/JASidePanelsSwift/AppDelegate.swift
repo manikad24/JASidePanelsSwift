@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import JASidePanelsSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let storyBoard = UIStoryboard(name:"Main",bundle: nil)
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
