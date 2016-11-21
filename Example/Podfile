@@ -3,9 +3,5 @@ use_frameworks!
 target 'JASidePanelsSwift_Example' do
   pod 'JASidePanelsSwift', :path => '../'
 
-  target 'JASidePanelsSwift_Tests' do
-    inherit! :search_paths
-
-    
-  end
+  
 end
