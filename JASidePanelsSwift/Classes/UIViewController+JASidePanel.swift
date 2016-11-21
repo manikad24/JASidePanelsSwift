@@ -1,16 +1,16 @@
 //
 //  UIViewController+JASidePanel.swift
-//  JASidePanels
+//  Pods
 //
-//  Created by vgs-user on 15/11/16.
-//  Copyright © 2016 vgs. All rights reserved.
+//  Created by Manikandan Prabhu on 18/11/16.
+//
 //
 
 import Foundation
 import UIKit
 
 extension UIViewController{
-    func sidePanelController() -> JASidePanelController {
+    public func sidePanelController() -> JASidePanelController {
         var iter = self.parentViewController
         while (iter != nil) {
             if (iter is JASidePanelController) {

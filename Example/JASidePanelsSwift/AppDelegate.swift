@@ -14,11 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let storyBoard = UIStoryboard(name:"Main",bundle: nil)
-    var sidePanel : JASidePanelController?
+    var sideController : JASidePanelController?
     
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        sideController = JASidePanelController()
+        sideController?.shouldDelegateAutorotateToVisiblePanel = false
+        sideController?.centerPanel = storyBoard.instantiateViewControllerWithIdentifier("Home1")
+        sideController?.leftPanel = storyBoard.instantiateViewControllerWithIdentifier("SideMenu")
+        
+        self.window?.rootViewController = sideController
         // Override point for customization after application launch.
         return true
     }

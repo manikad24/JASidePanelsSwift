@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import JASidePanelsSwift
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        self
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

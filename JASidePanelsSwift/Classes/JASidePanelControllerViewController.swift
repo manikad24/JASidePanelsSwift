@@ -1,9 +1,9 @@
 //
 //  JASidePanelController.swift
-//  JASidePanels
+//  Pods
 //
-//  Created by vgs-user on 03/11/16.
-//  Copyright © 2016 vgs. All rights reserved.
+//  Created by Manikandan Prabhu on 18/11/16.
+//
 //
 
 import UIKit
@@ -20,7 +20,7 @@ enum JASidePanelState : Int {
 }
 
 
-class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
+public class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     let ja_kvoContext : UnsafeMutablePointer<Void> = nil
     
     
@@ -51,7 +51,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     }
     // set the panels
     var _leftPanel: UIViewController!
-    var leftPanel: UIViewController!  {
+    public var leftPanel: UIViewController!  {
         set{
             if newValue != _leftPanel {
                 if(_leftPanel != nil){
@@ -76,8 +76,8 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         }
     }// optional
     
-    var _centerPanel: UIViewController!
-    var centerPanel: UIViewController!{
+    public var _centerPanel: UIViewController!
+    public var centerPanel: UIViewController!{
         set{
             let previous = self._centerPanel
             if(newValue != _centerPanel){
@@ -121,7 +121,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     }// required
     
     var _rightPanel: UIViewController!
-    var rightPanel: UIViewController!{
+    public var rightPanel: UIViewController!{
         set{
             if newValue != _rightPanel {
                 if(_rightPanel != nil){
@@ -165,18 +165,18 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         }
     }
     // push side panels instead of overlapping them
-    var pushesSidePanels: Bool = false
+    public var pushesSidePanels: Bool = false
     
     // size the left panel based on % of total screen width
-    var leftGapPercentage: CGFloat = 0.0
+    public var leftGapPercentage: CGFloat = 0.0
     
     // size the left panel based on this fixed size. overrides leftGapPercentage
-    var leftFixedWidth: CGFloat = 0.0
+    public var leftFixedWidth: CGFloat = 0.0
     
     // the visible width of the left panel
     
     var _leftVisibleWidth: CGFloat = 0.0
-    var leftVisibleWidth: CGFloat{
+    public var leftVisibleWidth: CGFloat{
         set{
             self._leftVisibleWidth = newValue
         }
@@ -191,14 +191,14 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     // size the right panel based on % of total screen width
-    var rightGapPercentage: CGFloat = 0.0
+    public var rightGapPercentage: CGFloat = 0.0
     
     // size the right panel based on this fixed size. overrides rightGapPercentage
-    var rightFixedWidth: CGFloat = 0.0
+    public var rightFixedWidth: CGFloat = 0.0
     
     // the visible width of the right panel
     var _rightVisibleWidth: CGFloat = 0.0
-    var rightVisibleWidth: CGFloat {
+    public var rightVisibleWidth: CGFloat {
         set{
             self._rightVisibleWidth = newValue
         }
@@ -215,33 +215,33 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     //MARK: - Animation
     
     // the minimum % of total screen width the centerPanel.view must move for panGesture to succeed
-    var minimumMovePercentage: CGFloat = 0.0
+    public var minimumMovePercentage: CGFloat = 0.0
     
     // the maximum time panel opening/closing should take. Actual time may be less if panGesture has already moved the view.
-    var maximumAnimationDuration: CGFloat = 0.0
+    public var maximumAnimationDuration: CGFloat = 0.0
     
     // how long the bounce animation should take
     var bounceDuration: CGFloat = 0.0
     
     // how far the view should bounce
-    var bouncePercentage: CGFloat = 0.0
+    public var bouncePercentage: CGFloat = 0.0
     
     // should the center panel bounce when you are panning open a left/right panel.
-    var bounceOnSidePanelOpen: Bool = true // defaults to YES
+    public var bounceOnSidePanelOpen: Bool = true // defaults to YES
     
     // should the center panel bounce when you are panning closed a left/right panel.
-    var bounceOnSidePanelClose: Bool = false // defaults to NO
+    public var bounceOnSidePanelClose: Bool = false // defaults to NO
     
     // while changing the center panel, should we bounce it offscreen?
-    var bounceOnCenterPanelChange: Bool = true // defaults to YES
+    public var bounceOnCenterPanelChange: Bool = true // defaults to YES
     
     //MARK: - Gesture Behavior
     
     // Determines whether the pan gesture is limited to the top ViewController in a UINavigationController/UITabBarController
-    var panningLimitedToTopViewController: Bool = true// default is YES
+    public var panningLimitedToTopViewController: Bool = true// default is YES
     
     // Determines whether showing panels can be controlled through pan gestures, or only through buttons
-    var recognizesPanGesture: Bool = true // default is YES
+    public var recognizesPanGesture: Bool = true // default is YES
     
     //MARK: - Nuts & Bolts
     
@@ -279,7 +279,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     // Whether or not the center panel is completely hidden
     var _centerPanelHidden: Bool = false
-    var centerPanelHidden: Bool{
+    public var centerPanelHidden: Bool{
         set{
             self.setCenterPanelHidden(_centerPanelHidden, animated: false, duration: 0.0)
         }
@@ -292,7 +292,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     private var visiblePanel: UIViewController!
     
     // If set to yes, "shouldAutorotateToInterfaceOrientation:" will be passed to self.visiblePanel instead of handled directly
-    var shouldDelegateAutorotateToVisiblePanel: Bool = true // defaults to YES
+    public var shouldDelegateAutorotateToVisiblePanel: Bool = true // defaults to YES
     
     // Determines whether or not the panel's views are removed when not visble. If YES, rightPanel & leftPanel's views are eligible for viewDidUnload
     var canUnloadRightPanel: Bool = false// defaults to NO
@@ -340,11 +340,11 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     //Support creating from Storyboard
     
-    init() {
+    public init() {
         super.init(nibName:nil, bundle:nil)
         self._baseInit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self._baseInit()
         fatalError("")
@@ -372,7 +372,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         self.centerPanelContainer = UIView(frame: self.view.bounds)
@@ -392,7 +392,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // ensure correct view dimensions
         self._layoutSideContainers(false, duration: 0.0)
@@ -401,7 +401,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
         self.styleContainer(self.centerPanelContainer, animate: false, duration: 0.0)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self._adjustCenterFrame()
         //Account for possible rotation while view appearing
@@ -410,7 +410,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     
     
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override public func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.centerPanelContainer.frame = self._adjustCenterFrame()
         self._layoutSideContainers(true, duration: duration)
         self._layoutSidePanels()
@@ -528,7 +528,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     // MARK: - Gesture Recognizer Delegate
     
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer.view! == self.tapView {
             return true
         }
@@ -993,7 +993,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     // MARK: - Key Value Observing
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>){
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>){
         if context == ja_kvoContext {
             if (keyPath == "view") {
                 if self.centerPanel.isViewLoaded() && self.recognizesPanGesture {
@@ -1111,7 +1111,7 @@ class JASidePanelController: UIViewController,UIGestureRecognizerDelegate {
     
     
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JASidePanelsSwift'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'JASidePanels Swift SideMenu'
 
 # This description is used to generate tags and improve search results.
@@ -22,7 +22,7 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/manikad24/JASidePanelsSwift'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://s16.postimg.org/ld2d4y0h1/Simulator_Screen_Shot_17_Nov_2016_3_49_46_PM.png', 'https://s4.postimg.org/fftbb7m5p/Simulator_Screen_Shot_17_Nov_2016_3_49_42_PM.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Manikandan' => 'manikad24@gmail.com' }
   s.source           = { :git => 'https://github.com/manikad24/JASidePanelsSwift.git', :tag => s.version.to_s }
