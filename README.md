@@ -7,6 +7,8 @@
 
 ## Example
 
+![iPhone Example](https://s16.postimg.org/ld2d4y0h1/Simulator_Screen_Shot_17_Nov_2016_3_49_46_PM.png) 
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
