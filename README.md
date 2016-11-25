@@ -22,6 +22,9 @@ it, simply add the following line to your Podfile:
 ```ruby
 For Swift 2.0 
 Use pod 'JASidePanelsSwift', '~> 1.0.1'
+
+For Swift 3.0 
+Use pod 'JASidePanelsSwift', '~> 2.0.1'
 ```
 
 ## Author

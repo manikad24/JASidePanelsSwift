@@ -11,13 +11,13 @@ import UIKit
 
 extension UIViewController{
     public func sidePanelController() -> JASidePanelController {
-        var iter = self.parentViewController
+        var iter = self.parent
         while (iter != nil) {
             if (iter is JASidePanelController) {
                 return (iter as! JASidePanelController)
             }
-            else if (iter!.parentViewController! != iter) {
-                iter = iter!.parentViewController!
+            else if (iter!.parent! != iter) {
+                iter = iter!.parent!
             }
             else {
                 iter = nil

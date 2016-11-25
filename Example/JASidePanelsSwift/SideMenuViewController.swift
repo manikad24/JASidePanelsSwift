@@ -25,10 +25,10 @@ class SideMenuViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name:"Main",bundle: nil)
-        self.sidePanelController().centerPanel = storyBoard.instantiateViewControllerWithIdentifier("Home\(indexPath.row + 1)")
-
+        self.sidePanelController().centerPanel = storyBoard.instantiateViewController(withIdentifier: "Home\(indexPath.row + 1)")
+        
     }
 
     // MARK: - Table view data source
